@@ -1,30 +1,32 @@
-import tkinter
+#动态归划 plt.sca(ax1)选择ax 
+import threading
+import tkinter as tk
+
+import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
-from matplotlib.backend_bases import key_press_handler
-from matplotlib.figure import Figure
+from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
+                                               NavigationToolbar2Tk)
 
-root = tkinter.Tk()  # 创建tkinter的主窗口
-root.title("在tkinter中使用matplotlib")
-
-f = Figure(figsize=(5, 4), dpi=100)
-a = f.add_subplot(111)  # 添加子图:1行1列第1个
-
-# 生成用于绘sin图的数据
-x = np.arange(0, 3, 0.01)
-y = np.sin(2 * np.pi * x)
-
-# 在前面得到的子图上绘图
-a.plot(x, y)
-
-# 将绘制的图形显示到tkinter:创建属于root的canvas画布,并将图f置于画布上
-canvas = FigureCanvasTkAgg(f, master=root)
-canvas.draw()  # 注意show方法已经过时了,这里改用draw
-canvas.get_tk_widget().pack(side=tkinter.TOP,  # 上对齐
-                            fill=tkinter.BOTH,  # 填充方式
-                            expand=tkinter.YES)  # 随窗口大小调整而调整
-
-# matplotlib的导航工具栏显示上来(默认是不会显示它的)
-
-# 主循环
-root.mainloop()
+root = tk.Tk()
+if 1:#数据部分
+    start_time=0
+    value=1
+    end_time=2
+    thing=np.zeros([8,3])#start_time value end_time
+    thing[0]=[1,5,4]
+    thing[1]=[3,1,5]
+    thing[2]=[0,8,6]
+    thing[3]=[4,4,7]
+    thing[4]=[3,6,8]
+    thing[5]=[5,3,9]
+    thing[6]=[6,2,10]
+    thing[7]=[8,4,11]
+    start_times = thing[:,start_time]
+    values=thing[:,value]
+    end_times = thing[:,end_time]
+    min_end_time=np.min(end_times)#最小结束时间
+buff=np.zeros(2)
+print(buff)
+buff[0]=values[0]
+buff[1]=values[1]
+print(np.max(buff))
