@@ -1,4 +1,17 @@
-#动态归划 plt.sca(ax1)选择ax 
+#动态归划 plt.sca(ax1)选择ax
+'''*******************************************************************
+ * 问题描述：有8件事可以选择完成，求获得的最大价值
+ *  01234567890a   价值  m--n表示开始事件点为m，结束时间点为n
+ * 0 1--4			5
+ * 1   3-5			1
+ * 20-----6			8
+ * 3    4--7		4
+ * 4   3-----8		6
+ * 5     5----9		3
+ * 6      6----10	2
+ * 7        8---11	4
+*******************************************************************'''
+import os 
 import threading
 import tkinter as tk
 
@@ -67,7 +80,23 @@ def max_value(num):
         buff[1]=max_value_tnfnum
         tvalue=np.max(buff)
         return tvalue
-
+def save_data():
+    global thing
+    if os.path.exists('1.txt') is False:
+        open('1.txt','w+').close()
+    with open('1.txt','w+') as f:
+        data=np.reshape(thing,[thing.size])
+        k=0
+        while k<len(data):
+            f.write(str(int(data[k]))+' ')
+            k=k+1
+            f.write(str(int(data[k]))+' ')
+            k=k+1
+            f.write(str(int(data[k])))
+            k=k+1
+            if k!= len(data):
+                f.write('\n')
+                
 def show():#界面显示
     global thing,root,start_times,end_times,values
     ind = np.arange(len(start_times))    # the x locations for the groups
