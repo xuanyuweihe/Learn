@@ -1,6 +1,7 @@
 #动态归划 plt.sca(ax1)选择ax 
 import threading
 import tkinter as tk
+import os
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -25,8 +26,21 @@ if 1:#数据部分
     values=thing[:,value]
     end_times = thing[:,end_time]
     min_end_time=np.min(end_times)#最小结束时间
-buff=np.zeros(2)
-print(buff)
-buff[0]=values[0]
-buff[1]=values[1]
-print(np.max(buff))
+def save_data():
+    global thing
+    if os.path.exists('1.txt') is False:
+        open('1.txt','w+').close()
+    with open('1.txt','w+') as f:
+        data=np.reshape(thing,[thing.size])
+        k=0
+        while k<len(data):
+            f.write(str(int(data[k]))+' ')
+            k=k+1
+            f.write(str(int(data[k]))+' ')
+            k=k+1
+            f.write(str(int(data[k])))
+            k=k+1
+            if k!= len(data):
+                f.write('\n')
+
+save_data()
