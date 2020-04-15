@@ -6,10 +6,6 @@ using namespace std;
 
 int main()
 {
-  int nums[]={1,2,3,4,2,3};
-  int num_to_find=3;
-  int start=0;
-  int end=5;
-  start=distance(nums,find(nums+start,nums+end,num_to_find));
-  cout<<start<<endl;
+  char a='0';
+  return 0;
 }
