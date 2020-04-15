@@ -73,7 +73,7 @@ int main()
 {
 	int cnt=0;//计数
 	ifstream infile; //c++文件流 >>是一次读取一行
-	infile.open("1.txt",ios::in);
+	infile.open("c1.txt",ios::in);
 	if(!infile.is_open())
 		cout << "Open file failure" << endl;
 	cnt=0;
