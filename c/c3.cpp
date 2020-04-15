@@ -111,6 +111,7 @@ void get_map()
             row++;
         }
     }
+    f.close();
 }
 void show_way()
 {
